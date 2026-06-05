@@ -18,9 +18,8 @@ try:
 except ImportError:
     StreamlitSecretNotFoundError = Exception
 
-# ======================================================
+
 # SECRET HELPERS
-# ======================================================
 
 def get_secret(key, default=None):
     value = os.getenv(key, default)
@@ -34,9 +33,8 @@ def get_secret(key, default=None):
         return value
     return value
 
-# ======================================================
+
 # DATABASE CONFIGURATION
-# ======================================================
 
 DEFAULT_DATABASE_URL = (
     "postgresql://neondb_owner:npg_9TZFX3naNjCJ@ep-muddy-sunset-aq4v1owq-pooler.c-8.us-east-1.aws.neon.tech/neondb?"
@@ -51,9 +49,9 @@ DEFAULT_EMAIL_PASSWORD = "tskfahtusmjwssqh"
 SENDER_EMAIL = get_secret("SENDER_EMAIL", DEFAULT_EMAIL_ADDRESS)
 SENDER_PASSWORD = get_secret("SENDER_PASSWORD", DEFAULT_EMAIL_PASSWORD)
 
-# ======================================================
+
 # DATABASE FUNCTIONS
-# ======================================================
+
 
 def save_fine_to_db(plate_number, owner_email, fine_reason, fine_amount):
     try:
@@ -70,9 +68,9 @@ def save_fine_to_db(plate_number, owner_email, fine_reason, fine_amount):
     except Exception as e:
         return False, f"Database error: {str(e)}"
 
-# ======================================================
+
 # EMAIL FUNCTIONS
-# ======================================================
+
 
 def send_fine_email(owner_email, plate_number, fine_reason, fine_amount):
     try:
@@ -140,9 +138,7 @@ st.set_page_config(
     menu_items={"About": "Traffic Fine Management System v1.0"}
 )
 
-# ======================================================
 # CUSTOM CSS STYLING
-# ======================================================
 
 custom_css = """
     <style>
@@ -222,9 +218,7 @@ custom_css = """
 
 st.markdown(custom_css, unsafe_allow_html=True)
 
-# ======================================================
-# HEADER SECTION
-# ======================================================
+# HEADER 
 
 st.markdown(
     """
@@ -252,9 +246,7 @@ MODEL_PATH = os.path.join(
 
 model = YOLO(MODEL_PATH)
 
-
 # LOAD OCR
-
 
 reader = easyocr.Reader(['en'])
 
@@ -488,9 +480,9 @@ if uploaded_file is not None:
             st.markdown("</div>", unsafe_allow_html=True)
             st.markdown("")
 
-            # ------------------------------------------
+            
             # EDITABLE TEXTBOX
-            # ------------------------------------------
+            
 
             st.markdown("<div class='section-container'>", unsafe_allow_html=True)
             st.markdown("### ✏️ Verify/Edit Plate Number")
@@ -503,9 +495,9 @@ if uploaded_file is not None:
             st.markdown("</div>", unsafe_allow_html=True)
             st.markdown("")
 
-            # ======================================================
+            
             # OWNER EMAIL
-            # ======================================================
+            
 
             st.markdown("<div class='section-container'>", unsafe_allow_html=True)
             st.markdown("### 📧 Owner Details")
@@ -517,9 +509,9 @@ if uploaded_file is not None:
             st.markdown("</div>", unsafe_allow_html=True)
             st.markdown("")
 
-            # ======================================================
+            
             # FINE SECTION
-            # ======================================================
+            
 
             st.markdown("<div class='section-container'>", unsafe_allow_html=True)
             st.markdown("### ⚖️ Fine Details")
@@ -539,9 +531,9 @@ if uploaded_file is not None:
                 )
 
             with col2:
-                # ------------------------------------------
+                
                 # FINE MAPPING
-                # ------------------------------------------
+                
 
                 fine_mapping = {
                     "Wrong Parking": 1000,
@@ -556,9 +548,9 @@ if uploaded_file is not None:
             st.markdown("</div>", unsafe_allow_html=True)
             st.markdown("")
 
-            # ======================================================
+            
             # GENERATE FINE BUTTON
-            # ======================================================
+            
 
             st.markdown("<div class='section-container'>", unsafe_allow_html=True)
             
@@ -610,7 +602,6 @@ if uploaded_file is not None:
                         st.markdown(f"<div class='fine-details' style='background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-left: 5px solid #c62828;'><b>💰 Fine Amount</b><br><h2 style='margin: 10px 0 0 0; color: #b71c1c;'>₹{fine_amount}</h2></div>", unsafe_allow_html=True)
             
             st.markdown("</div>", unsafe_allow_html=True)
-            st.info("Demo Project: This application is developed for educational and portfolio purposes.")
 
     if not detected:
         st.markdown("<div class='section-container' style='border-left: 5px solid #d32f2f;'><h3 style='color: #d32f2f;'>❌ No Plate Detected</h3><p>Please upload a clear image of a vehicle number plate and try again.</p></div>", unsafe_allow_html=True)
