@@ -610,6 +610,7 @@ if uploaded_file is not None:
                         st.markdown(f"<div class='fine-details' style='background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); border-left: 5px solid #c62828;'><b>💰 Fine Amount</b><br><h2 style='margin: 10px 0 0 0; color: #b71c1c;'>₹{fine_amount}</h2></div>", unsafe_allow_html=True)
             
             st.markdown("</div>", unsafe_allow_html=True)
+            st.info("Demo Project: This application is developed for educational and portfolio purposes.")
 
     if not detected:
         st.markdown("<div class='section-container' style='border-left: 5px solid #d32f2f;'><h3 style='color: #d32f2f;'>❌ No Plate Detected</h3><p>Please upload a clear image of a vehicle number plate and try again.</p></div>", unsafe_allow_html=True)
