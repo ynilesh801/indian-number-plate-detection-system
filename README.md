@@ -127,7 +127,7 @@ The system automatically generates and sends a traffic fine notification contain
 ### Clone Repository
 
 ```bash
-git clone https://github.com/your-username/indian-number-plate-detection-system.git
+git clone https://github.com/ynilesh801/indian-number-plate-detection-system.git
 
 cd indian-number-plate-detection-system
 ```
@@ -199,9 +199,9 @@ This project was developed for educational and portfolio purposes only. It is no
 
 Aspiring Data Analyst | Machine Learning Enthusiast | Computer Vision Projects
 
-LinkedIn: (https://www.linkedin.com/in/ynilesh801/)
+LinkedIn: https://www.linkedin.com/in/ynilesh801/
 
-GitHub: (https://github.com/ynilesh801/)
+GitHub: https://github.com/ynilesh801/
 
 ---
 ⭐ If you found this project useful, consider giving it a star.
